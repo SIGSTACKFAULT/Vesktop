@@ -1,6 +1,6 @@
 {
     "name": "vesktop",
-    "version": "1.5.8",
+    "version": "1.6.0",
     "private": true,
     "description": "Vesktop is a custom Discord desktop app",
     "keywords": [],
@@ -11,6 +11,7 @@
     "scripts": {
         "build": "tsx scripts/build/build.mts",
         "build:dev": "pnpm build --dev",
+        "buildLibVesktop": "pnpm -C packages/libvesktop install && pnpm -C packages/libvesktop run build",
         "package": "pnpm build && electron-builder",
         "package:dir": "pnpm build && electron-builder --dir",
         "lint": "eslint",
@@ -21,7 +22,7 @@
         "test": "pnpm lint && pnpm testTypes",
         "testTypes": "tsc --noEmit",
         "watch": "pnpm build --watch",
-        "updateMeta": "tsx scripts/utils/updateMeta.mts",
+        "generateMeta": "tsx scripts/utils/generateMeta.mts",
         "updateArrpcDB": "node ./node_modules/arrpc/update_db.js",
         "postinstall": "pnpm updateArrpcDB"
     },
@@ -50,6 +51,7 @@
         "eslint-plugin-simple-header": "^1.2.2",
         "eslint-plugin-simple-import-sort": "^12.1.1",
         "eslint-plugin-unused-imports": "^4.2.0",
+        "libvesktop": "link:packages/libvesktop",
         "prettier": "^3.6.2",
         "source-map-support": "^0.5.21",
         "tsx": "^4.20.6",
